@@ -1,0 +1,52 @@
+openapi: 3.0.0
+info:
+  title: Candidate API
+  version: 1.0.0
+paths:
+  /xcelhub/api/v1/candidate/:
+    post:
+      summary: Adds a new candidate
+      requestBody:
+        description: Request body for adding a new candidate
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddNewCandidateRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddNewCandidateResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                error: "Invalid request payload"
+components:
+  schemas:
+    AddNewCandidateRequest:  # Define your request schema here
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the candidate
+        contactNo:
+          type: string
+          description: The contact number of the candidate
+        email:
+          type: string
+          description: The email id of the candidate
+        joining_date:
+          type: string
+          format: date
+          description: The joining date of candidate
+    AddNewCandidateResponse: # Define your response schema here
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Form is saved successfully"
