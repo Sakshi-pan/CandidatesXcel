@@ -4,5 +4,5 @@ data class UpdateDocumentRequest(
     val id: Long,
     val title: String?,
     val type: String?,
-    val content: ByteArray
+    val filePath: String?
 )

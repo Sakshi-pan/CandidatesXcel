@@ -16,10 +16,8 @@ class Document(
     @Column(name = "type", columnDefinition = "TEXT")
     var type: String? = null,
 
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
-    @Column(name = "content", nullable = false)
-    var content: ByteArray? = null,
+    @Column(name = "file_path")
+    var filePath: String? = null,
 
     @Column(name = "created_at")
     var createdAt: LocalDateTime = LocalDateTime.now()
@@ -27,7 +25,7 @@ class Document(
     constructor(
         title: String?,
         type: String?,
-        content: ByteArray?,
+        filePath: String?,
         createdAt: LocalDateTime = LocalDateTime.now()
-    ) : this(null, title, type, content, createdAt)
+    ) : this(null, title, type, filePath, createdAt)
 }

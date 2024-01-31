@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional
 interface DocumentRepo :JpaRepository<Document, Long> {
     @Modifying
     @Transactional
-    @Query("UPDATE Document d SET d.title = :title, d.type = :type WHERE d.id = :id")
-    fun update(@Param("id") id: Long, @Param("title") title: String, @Param("type") type: String): Int
-
+    @Query("UPDATE Document d SET d.title = :title, d.type = :type, d.filePath = :filePath WHERE d.id = :id")
+    fun update(@Param("id") id: Long, @Param("title") title: String, @Param("type") type: String, @Param("filePath") filePath: String): Int
 }
